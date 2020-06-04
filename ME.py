@@ -1,8 +1,10 @@
 #  This program runs a simple McCollough Effect stim for 70 seconds, swapping between a white background and a color
 #  background every 10 seconds
 
+# Pressing escape at any point will exit the program early
 
-from psychopy import visual, core
+
+from psychopy import visual, core, event
 
 win = visual.Window(
     size=[400, 400],
@@ -66,6 +68,8 @@ while timer.getTime() > 0:
             line.ori = orientation[quadrant]
             line.draw()
     win.flip()
+    if event.getKeys(keyList=['escape']):  # pressing escape terminates early
+        break
 
 win.close()
 core.quit()
